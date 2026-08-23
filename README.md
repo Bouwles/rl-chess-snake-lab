@@ -148,6 +148,7 @@ More notes:
 - [Snake reward design](docs/SNAKE_REWARDS.md)
 - [Chess experiment notes](docs/CHESS_EXPERIMENT_NOTES.md)
 - [Improvement log](docs/IMPROVEMENTS.md)
+- [Roadmap](docs/ROADMAP.md)
 
 ## Limitations
 
