@@ -1,0 +1,9 @@
+{
+  "episodes": 100,
+  "gamma": 0.9,
+  "epsilon_start": 1.0,
+  "epsilon_end": 0.05,
+  "epsilon_decay": 0.98,
+  "batch_size": 64,
+  "learning_rate": 0.001
+}
