@@ -24,3 +24,6 @@ jobs:
 
       - name: Run tests
         run: python -m pytest -q
+
+      - name: Compile Python files
+        run: python -m compileall rl_lab scripts
