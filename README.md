@@ -1,5 +1,7 @@
 # RL Chess and Snake Lab
 
+[![Tests](https://github.com/Bouwles/rl-chess-snake-lab/actions/workflows/tests.yml/badge.svg)](https://github.com/Bouwles/rl-chess-snake-lab/actions/workflows/tests.yml)
+
 This repo is a small reinforcement learning lab with two game agents: Snake and Chess. The goal is to show the core ideas behind RL in a way that is readable, testable, and honest about what each system can and cannot learn.
 
 Snake is the main DQN experiment because the environment is simple enough for learning behavior to become visible. Chess is included as a harder self-play experiment that uses legal moves and board features, but it is not trying to be a strong chess engine.
