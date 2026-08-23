@@ -94,6 +94,12 @@ python -m rl_lab.snake.train
 
 This trains a small DQN and saves weights to `snake_dqn.pt`.
 
+To compare simple baseline policies:
+
+```bash
+python scripts/evaluate_snake_baseline.py
+```
+
 ## Run the Chess Experiment
 
 ```bash
