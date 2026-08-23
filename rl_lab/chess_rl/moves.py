@@ -14,3 +14,14 @@ def describe_move(board: chess.Board, move_uci: str) -> str:
         f"{color} {piece_family(piece)} from "
         f"{chess.square_name(move.from_square)} to {chess.square_name(move.to_square)}"
     )
+
+
+def count_captures(board: chess.Board, move_uci_list: list[str]) -> int:
+    board = board.copy()
+    captures = 0
+    for move_uci in move_uci_list:
+        move = chess.Move.from_uci(move_uci)
+        if board.is_capture(move):
+            captures += 1
+        board.push(move)
+    return captures
