@@ -18,6 +18,20 @@ Chess self-play demo:
 
 The GIFs are visual demos of the environments and move flow. They are included so the repo is easy to inspect quickly. The training scripts are separate from these short demos.
 
+## Current Evidence
+
+This project is intentionally test-heavy for a small RL lab. The interesting claim is not that the agents are world-class; it is that the environments, helpers, and training surfaces are reliable enough to experiment with.
+
+| Area | Evidence |
+| --- | --- |
+| Snake rules | Unit tests cover movement, food, death, actions, seeds, and Gym-style wrapping. |
+| RL plumbing | Replay memory, schedules, metrics, logging, checkpoints, and configs have focused tests. |
+| Chess rules | Legal moves, board features, rendering, and environment transitions are tested. |
+| Reproducibility | Seed utilities and sample configs make experiments repeatable. |
+| Demo value | GIFs show both environments running without needing to train first. |
+
+The repo also includes `examples/sample_training_log.csv` so reviewers can inspect the shape of a training run without starting from a blank page.
+
 ## What This Project Shows
 
 - a custom Gym-style Snake environment
