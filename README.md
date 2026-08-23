@@ -111,6 +111,13 @@ In this repo:
 - epsilon-greedy exploration lets the agent try random moves early in training
 - the Chess experiment uses legal moves from `python-chess` and simple rewards from material changes and game outcomes
 
+More notes:
+
+- [RL concepts](docs/RL_CONCEPTS.md)
+- [Snake reward design](docs/SNAKE_REWARDS.md)
+- [Chess experiment notes](docs/CHESS_EXPERIMENT_NOTES.md)
+- [Improvement log](docs/IMPROVEMENTS.md)
+
 ## Limitations
 
 The Snake agent can learn useful behavior with enough training, but the default settings are kept small so the code is easy to run.
