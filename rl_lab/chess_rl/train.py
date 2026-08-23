@@ -4,6 +4,7 @@ import chess
 import torch
 from torch import optim
 
+from rl_lab.common.checkpoints import checkpoint_path
 from rl_lab.chess_rl.env import ChessSelfPlayEnv
 from rl_lab.chess_rl.features import board_to_tensor
 from rl_lab.chess_rl.model import ChessPolicyNet
@@ -47,4 +48,7 @@ def train_chess_self_play(episodes: int = 10) -> ChessPolicyNet:
 
 
 if __name__ == "__main__":
-    torch.save(train_chess_self_play().state_dict(), "chess_policy.pt")
+    path = checkpoint_path("chess", "policy")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    torch.save(train_chess_self_play().state_dict(), path)
+    print(f"Saved Chess model to {path}")
