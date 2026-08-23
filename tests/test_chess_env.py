@@ -21,3 +21,11 @@ def test_chess_env_legal_actions_returns_moves():
 
     assert "e2e4" in actions
     assert len(actions) == 20
+
+
+def test_chess_env_rejects_illegal_moves():
+    env = ChessSelfPlayEnv()
+    env.reset()
+
+    with pytest.raises(ValueError):
+        env.step("e2e5")
