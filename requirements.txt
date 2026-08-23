@@ -1,0 +1,6 @@
+torch>=2.2
+numpy>=1.26
+python-chess>=1.999
+gymnasium>=0.29
+pillow>=10.0
+pytest>=8.0
