@@ -27,5 +27,8 @@ dev = [
 [tool.setuptools.packages.find]
 include = ["rl_lab*"]
 
+[tool.setuptools.package-data]
+rl_lab = ["py.typed"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
