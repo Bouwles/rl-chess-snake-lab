@@ -34,3 +34,13 @@ def test_snake_wall_collision_ends_episode():
 
     assert reward == -10.0
     assert done is True
+
+
+def test_snake_episode_can_end_after_too_many_steps():
+    env = SnakeEnv(size=4, seed=1)
+    env.reset()
+    env.steps = env.size * env.size * 2
+
+    _, _, done, _ = env.step(1)
+
+    assert done is True
