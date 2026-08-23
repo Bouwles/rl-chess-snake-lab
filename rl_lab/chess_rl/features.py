@@ -44,3 +44,11 @@ def material_score(board: chess.Board) -> int:
         value = PIECE_VALUES[piece.piece_type]
         score += value if piece.color == chess.WHITE else -value
     return score
+
+
+def material_label(board: chess.Board) -> str:
+    score = material_score(board)
+    if score == 0:
+        return "material equal"
+    leader = "white" if score > 0 else "black"
+    return f"{leader} ahead by {abs(score)}"
