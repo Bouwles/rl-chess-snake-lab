@@ -25,27 +25,39 @@ def make_snake_demo() -> None:
     env.reset()
 
     for step in range(36):
-        img = Image.new("RGB", (480, 540), "#f7f9fc")
+        img = Image.new("RGB", (480, 540), "#eef4f8")
         draw = ImageDraw.Draw(img)
         draw.text((28, 18), "Snake DQN Environment Demo", fill="#17202a", font=font(24))
         draw.text((28, 50), f"Score: {env.score}", fill="#4d5b6c", font=font(18))
 
         cell = 42
         ox, oy = 28, 90
-        draw.rounded_rectangle((ox - 8, oy - 8, ox + 10 * cell + 8, oy + 10 * cell + 8), radius=12, fill="#ffffff", outline="#d4dce8")
+        draw.rounded_rectangle((ox - 10, oy - 10, ox + 10 * cell + 10, oy + 10 * cell + 10), radius=18, fill="#19324a", outline="#102235")
 
         for y in range(env.size):
             for x in range(env.size):
                 x0 = ox + x * cell
                 y0 = oy + y * cell
-                draw.rectangle((x0, y0, x0 + cell - 3, y0 + cell - 3), fill="#edf2f7")
+                color = "#d7f0dc" if (x + y) % 2 == 0 else "#c6e6cd"
+                draw.rounded_rectangle((x0, y0, x0 + cell - 4, y0 + cell - 4), radius=5, fill=color)
 
         for index, (x, y) in enumerate(env.snake):
-            color = "#1f6feb" if index == 0 else "#63a4ff"
-            draw.rounded_rectangle((ox + x * cell, oy + y * cell, ox + x * cell + cell - 3, oy + y * cell + cell - 3), radius=8, fill=color)
+            x0 = ox + x * cell
+            y0 = oy + y * cell
+            color = "#12664f" if index == 0 else "#22a06b"
+            draw.rounded_rectangle((x0 + 3, y0 + 3, x0 + cell - 7, y0 + cell - 7), radius=13, fill=color)
+            if index == 0:
+                draw.ellipse((x0 + 11, y0 + 12, x0 + 17, y0 + 18), fill="white")
+                draw.ellipse((x0 + 25, y0 + 12, x0 + 31, y0 + 18), fill="white")
+                draw.ellipse((x0 + 13, y0 + 14, x0 + 16, y0 + 17), fill="#111827")
+                draw.ellipse((x0 + 27, y0 + 14, x0 + 30, y0 + 17), fill="#111827")
 
         fx, fy = env.food
-        draw.ellipse((ox + fx * cell + 8, oy + fy * cell + 8, ox + fx * cell + cell - 11, oy + fy * cell + cell - 11), fill="#e63946")
+        apple_x = ox + fx * cell
+        apple_y = oy + fy * cell
+        draw.ellipse((apple_x + 8, apple_y + 10, apple_x + cell - 11, apple_y + cell - 8), fill="#d62828")
+        draw.rectangle((apple_x + 20, apple_y + 7, apple_x + 24, apple_y + 15), fill="#6b3f1d")
+        draw.ellipse((apple_x + 24, apple_y + 6, apple_x + 33, apple_y + 14), fill="#2f9e44")
 
         frames.append(img)
         _, _, done, _ = env.step([1, 1, 2, 1, 0, 1][step % 6])
