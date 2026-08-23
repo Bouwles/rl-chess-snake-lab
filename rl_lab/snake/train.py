@@ -4,6 +4,7 @@ from dataclasses import dataclass
 import torch
 from torch import nn, optim
 
+from rl_lab.common.checkpoints import checkpoint_path
 from rl_lab.common.dqn import DQN
 from rl_lab.common.replay import ReplayMemory
 from rl_lab.snake.env import SnakeEnv
@@ -71,4 +72,7 @@ def train_snake(config: SnakeTrainingConfig = SnakeTrainingConfig()) -> DQN:
 
 
 if __name__ == "__main__":
-    torch.save(train_snake().state_dict(), "snake_dqn.pt")
+    path = checkpoint_path("snake", "dqn")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    torch.save(train_snake().state_dict(), path)
+    print(f"Saved Snake model to {path}")
