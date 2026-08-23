@@ -1,0 +1,7 @@
+{
+  "episodes": 10,
+  "max_moves": 160,
+  "learning_rate": 0.001,
+  "exploration": 0.25,
+  "reward": "material_change_and_game_result"
+}
