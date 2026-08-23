@@ -14,6 +14,8 @@ Chess self-play demo:
 
 ![Chess demo](docs/media/chess_demo.gif)
 
+The GIFs are visual demos of the environments and move flow. They are included so the repo is easy to inspect quickly. The training scripts are separate from these short demos.
+
 ## What This Project Shows
 
 - a custom Gym-style Snake environment
