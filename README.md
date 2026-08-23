@@ -84,6 +84,10 @@ You can also install from `requirements.txt`:
 pip install -r requirements.txt
 ```
 
+## Example Configs
+
+The `examples/` folder includes small JSON configs for Snake and Chess training. They are meant to make the training settings easy to inspect before changing the code.
+
 ## Run Tests
 
 ```bash
