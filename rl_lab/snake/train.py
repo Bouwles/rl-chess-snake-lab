@@ -7,6 +7,7 @@ from torch import nn, optim
 from rl_lab.common.checkpoints import checkpoint_path
 from rl_lab.common.dqn import DQN
 from rl_lab.common.replay import ReplayMemory
+from rl_lab.common.schedules import decay_epsilon
 from rl_lab.snake.env import SnakeEnv
 
 
@@ -66,7 +67,7 @@ def train_snake(config: SnakeTrainingConfig = SnakeTrainingConfig()) -> DQN:
             loss.backward()
             optimizer.step()
 
-        epsilon = max(config.epsilon_end, epsilon * config.epsilon_decay)
+        epsilon = decay_epsilon(epsilon, config.epsilon_end, config.epsilon_decay)
 
     return model
 
