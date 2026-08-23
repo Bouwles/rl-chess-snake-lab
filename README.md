@@ -32,6 +32,15 @@ Snake is useful for learning RL fundamentals because the state is small, the rew
 
 Chess is much harder because the action space changes every turn, the reward is delayed, and good play requires long-term planning. This project treats chess as an educational self-play experiment rather than pretending it can beat a real engine after a few minutes of training.
 
+## Snake vs Chess
+
+| Area | Snake | Chess |
+| --- | --- | --- |
+| State size | Small 11-value vector | 12 board planes |
+| Actions | 3 fixed actions | Legal moves change every turn |
+| Reward timing | Food and death are immediate | Good moves may pay off much later |
+| Best use here | DQN learning demo | Self-play research experiment |
+
 ## Project Structure
 
 ```text
