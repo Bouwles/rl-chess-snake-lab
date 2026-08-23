@@ -108,6 +108,12 @@ python -m rl_lab.chess_rl.train
 
 This runs a short educational self-play loop and saves weights to `chess_policy.pt`.
 
+To print a short legal-move chess sequence:
+
+```bash
+python scripts/show_chess_demo.py
+```
+
 ## Regenerate Demo GIFs
 
 ```bash
