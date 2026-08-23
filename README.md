@@ -66,6 +66,10 @@ scripts/            Demo asset generation
 docs/media/         GIF demos for GitHub
 ```
 
+## Suggested Reading Order
+
+If you are reading the code for the first time, start with `rl_lab/snake/env.py`, then `rl_lab/common/replay.py`, then `rl_lab/snake/train.py`. For chess, start with `rl_lab/chess_rl/env.py` and `rl_lab/chess_rl/features.py`.
+
 ## Setup
 
 ```bash
