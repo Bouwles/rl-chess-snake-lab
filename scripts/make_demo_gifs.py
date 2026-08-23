@@ -4,6 +4,7 @@ import chess
 from PIL import Image, ImageDraw, ImageFont
 
 from rl_lab.chess_rl.demo import run_chess_demo
+from rl_lab.chess_rl.rendering import piece_family
 from rl_lab.snake.env import SnakeEnv
 
 
@@ -54,6 +55,39 @@ def make_snake_demo() -> None:
     frames[0].save(MEDIA_DIR / "snake_demo.gif", save_all=True, append_images=frames[1:], duration=140, loop=0)
 
 
+def draw_chess_piece(draw: ImageDraw.ImageDraw, piece: chess.Piece, x: int, y: int, square: int) -> None:
+    family = piece_family(piece)
+    fill = "#f8fafc" if piece.color == chess.WHITE else "#111827"
+    outline = "#111827" if piece.color == chess.WHITE else "#f8fafc"
+    cx = x + square // 2
+    base_y = y + square - 11
+
+    draw.ellipse((cx - 13, y + 11, cx + 13, y + 37), fill=fill, outline=outline, width=2)
+    draw.rounded_rectangle((cx - 18, y + 32, cx + 18, base_y - 7), radius=6, fill=fill, outline=outline, width=2)
+    draw.rectangle((cx - 24, base_y - 7, cx + 24, base_y), fill=fill, outline=outline, width=2)
+
+    if family == "king":
+        draw.line((cx, y + 5, cx, y + 22), fill=outline, width=3)
+        draw.line((cx - 7, y + 12, cx + 7, y + 12), fill=outline, width=3)
+    elif family == "queen":
+        for offset in (-13, 0, 13):
+            draw.ellipse((cx + offset - 4, y + 4, cx + offset + 4, y + 12), fill=outline)
+    elif family == "rook":
+        for offset in (-14, 0, 14):
+            draw.rectangle((cx + offset - 5, y + 7, cx + offset + 5, y + 18), fill=outline)
+    elif family == "bishop":
+        draw.line((cx - 8, y + 15, cx + 8, y + 28), fill=outline, width=3)
+    elif family == "knight":
+        draw.polygon(
+            [(cx - 13, y + 18), (cx + 10, y + 8), (cx + 17, y + 30), (cx - 5, y + 34)],
+            fill=fill,
+            outline=outline,
+        )
+        draw.ellipse((cx + 5, y + 19, cx + 9, y + 23), fill=outline)
+    elif family == "pawn":
+        draw.ellipse((cx - 9, y + 16, cx + 9, y + 34), fill=fill, outline=outline, width=2)
+
+
 def make_chess_demo() -> None:
     board = chess.Board()
     frames = []
@@ -77,9 +111,7 @@ def make_chess_demo() -> None:
         for sq, piece in board.piece_map().items():
             file = chess.square_file(sq)
             rank = 7 - chess.square_rank(sq)
-            x = ox + file * square + 16
-            y = oy + rank * square + 13
-            draw.text((x, y), piece.symbol(), fill="#17202a", font=font(28))
+            draw_chess_piece(draw, piece, ox + file * square, oy + rank * square, square)
 
         frames.append(img)
         if index < len(moves):
